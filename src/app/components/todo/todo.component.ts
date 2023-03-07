@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Todo } from '~/app/services/todo.model';
 import { TodoService } from '~/app/services/todo.service';
 
@@ -6,15 +6,29 @@ import { TodoService } from '~/app/services/todo.service';
   selector: 'todo',
   templateUrl: './todo.component.html',
 })
-export class TodoComponent {
-  todoListFinal: Todo[];
+export class TodoComponent implements OnInit {
+  public todoData: any;
 
-  constructor(private todoService: TodoService) {
-    this.todoListFinal = this.todoService.getAllTodos();
-  }
+  constructor() {}
 
-  addTodo() {
-    console.log('TAPPING');
-    this.todoService.generateRandomTodo();
+  ngOnInit() {}
+
+  public toggleCompletion() {
+    this.todoData.completed = !this.todoData.completed;
   }
 }
+
+//   todoListFinal: Todo[];
+
+//   constructor(private todoService: TodoService) {
+//     this.todoListFinal = this.todoService.getAllTodos();
+//   }
+// ngOnInit(): void {
+// throw new Error('Method not implemented.');
+// }
+
+//   addTodo() {
+//     console.log('TAPPING');
+//     this.todoService.generateRandomTodo();
+//   }
+// }
